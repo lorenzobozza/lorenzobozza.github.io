@@ -1,0 +1,221 @@
+@font-face {
+    font-family: 'Major Mono Display';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/majormonodisplay.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 200;
+    src: url(/fonts/montserrat.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body{ background-color: #060606; }
+a { text-decoration: none; color: inherit; }
+span, h1, h2, h3 { font-family: 'Major Mono Display', monospace; color: white; }
+p { font-family: 'Montserrat'; color: white; }
+
+.flex {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.lock {
+    overflow: hidden;
+}
+
+/* ---------------- */
+#geometry {
+    position: fixed;
+    z-index: 0;
+    background-color: #060606;
+    transition: ease .5s;
+}
+#geometry.blur {
+    filter: blur(2px);
+}
+
+nav {
+    position: fixed;
+    height: 5vh;
+    width: 100%;
+    padding: 0 2vh;
+    filter: opacity(0);
+    transition: ease .5s;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+}
+nav.show {
+    filter: opacity(1);
+    transition: ease 1s;
+}
+nav span.nav-escape {
+    filter: opacity(0);
+    transition: ease .6s;
+    color: inherit;
+    cursor: pointer;
+}
+nav span.nav-escape.show {
+    filter: opacity(1);
+}
+nav span.nav-escape.show:hover {
+    transform: scale(0.9);
+}
+nav span.nav-escape svg {
+    padding-top: 5px;
+    height: 4vh;
+}
+nav span.nav-branding {
+    line-height: 5vh;
+    font-size: 1.2rem;
+    color: inherit;
+}
+
+/* ---------------- */
+.title {
+    font-size: 3rem;
+    text-align: center;
+    color: #fff;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title * {
+    z-index: 0;
+}
+
+.title svg {
+    width: 60px;
+    animation: jump 2s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+@keyframes jump {
+    0% { transform: translateY(0); }
+    60% { transform: translateY(0); }
+    80% { transform: translateY(.3rem); }
+}
+
+/* ---------------- */
+#content {
+    font-size: 2rem;
+    color: white;
+    filter: opacity(0);
+    transition: ease 1.5s;
+}
+
+#content.show {
+    filter: opacity(1);
+}
+
+#content.push_back {
+    transform: scale(.5);
+    transition: ease .5s !important;
+}
+
+#content.flex {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    padding: 5vh 10vw;
+}
+
+span.block {
+    margin: 10vh 5vw;
+    flex: 1 0 25vw;
+    transition: ease 0.2s;
+    cursor: pointer;
+}
+
+span.block:hover {
+    transform: translateX(.5vw);
+}
+
+span.block a {
+    padding: 2vh 2vw;
+    color: inherit;
+}
+
+span.block:hover a::before {
+    content: "►";
+    position: absolute;
+    margin: -.2rem 0 0 -2rem;
+}
+
+/* ---------------- */
+.overlay_frame {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    filter: opacity(0);
+    transition: ease .5s;
+    color: white;
+}
+.overlay_frame.show {
+    z-index: 0;
+    filter: opacity(1);
+}
+.overlay_frame li {
+    padding: 1vh;
+    list-style: none;
+    transition: ease 0.2s;
+}
+.overlay_frame li:hover {
+    transform: translateX(.5vw);
+}
+.overlay_frame li span {
+    padding: 1vh 1vw;
+    color: inherit;
+    cursor: pointer;
+}
+.overlay_frame li:hover span::before  {
+    content: "►";
+    position: absolute;
+    margin: -.2rem 0 0 -2rem;
+}
+
+
+.overlay-content {
+    height: 100vh;
+    max-width: 1300px;
+    overflow-y: scroll;
+    padding: 0 5vw 5vh;
+    margin-top: 5vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* Edge */
+}
+.overlay-content::-webkit-scrollbar { /* Chrome, Safari */
+    display: none;
+}
+.overlay-content h1 {
+    margin-bottom: 2vh;
+}
+.overlay-content p {
+    text-align: justify;
+}
+div.flex-paragraph {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2vh 0 1vh;
+}
+
+@media screen and (max-width: 600px) {
+    .overlay-content p {
+        font-size: 10pt;
+    }
+  }

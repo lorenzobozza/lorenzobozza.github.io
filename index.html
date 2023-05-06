@@ -1,6 +1,128 @@
-<html charset="utf-8">
-    <head></head>
+<!doctype html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>lorenzobozza.com</title>
+        <link rel="stylesheet" href="/style.css">
+        <!--script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script-->
+        <!--script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script-->
+        <!--script src="sphere.js"></script-->
+    </head>
     <body>
-        <h1>LANDPAGE</h1>
+        <!-- Background geometry -->
+        <svg id="geometry" width="100%" height="100vh" viewBox="0 0 2000 2000"
+                xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <g stroke="#D00000" stroke-width="5" fill="none">
+                <line x1="-2500" y1="4000" x2="4000" y2="-2800"  />
+                <circle cx="-1000" cy="3000" r="2000"  />
+                <circle cx="3400" cy="-500" r="2000"  />
+            </g>
+        </svg>
+
+        <!-- Navbar -->
+        <nav>
+            <span class="nav-escape" onclick="escape();">
+                <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.458333 26.458333" version="1.1">
+                <g>
+                    <path
+                    style="fill:#fff;stroke:#fff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                    d="m 13.323243,21.632861 h 4.619033 c 0,0 2.042588,-0.06963 3.528106,-1.880109 1.485518,-1.810476 1.021294,-5.29216 1.021294,-5.29216 0,0 -0.139268,-1.601574 -1.833687,-2.971036 -1.694419,-1.369462 -3.620951,-1.183773 -3.620951,-1.183773 L 4.8975681,10.282572 c 0,0 -0.1392671,0.02321 -0.023212,0.116056 0.1160561,0.09284 0.3481684,0.348168 0.3481684,0.348168 l 4.2877221,4.770396 c 0,0 0.6844494,0.594391 -0.00901,1.296852 -0.6934554,0.702461 -1.4319406,0.05404 -1.4319406,0.05404 L 1.8642245,9.9785542 c 0,0 -0.8375501,-0.7474908 -0.00901,-1.6570883 C 2.6837629,7.4118683 2.6837629,7.4118683 2.6837629,7.4118683 L 8.1323417,1.3598932 c 0,0 0.531349,-0.63041405 1.3418815,0.099065 C 10.284755,2.1884375 9.1950396,3.1430645 9.1950396,3.1430645 L 4.9262357,7.8441523 c 0,0 -0.04503,0.063041 0,0.081053 0.04503,0.018013 12.9955363,-0.00901 12.9955363,-0.00901 0,0 2.677711,0.010385 4.677427,1.9378223 1.999716,1.9274364 2.337018,4.3367334 2.337018,4.3367334 0,0 0.09637,0.65051 0.09637,0.987811 0,0.337302 0,1.806972 0,1.806972 0,0 0.07228,1.686508 -1.180555,3.710317 -1.252834,2.023809 -3.324829,2.794783 -3.324829,2.794783 0,0 -1.631847,0.60632 -2.606357,0.60632 -0.974509,0 -4.606771,0 -4.606771,0 0,0 -0.65811,0.101248 -0.645454,-1.202317 0.01266,-1.303564 0.654621,-1.261781 0.654621,-1.261781 z"/>
+                </g>
+                </svg>
+            </span>
+            <a href="/"><span class="nav-branding">lorenzobozzA</span></a>
+        </nav>
+
+        <!-- Landing page title -->
+        <div class="flex">
+            <a href="#content">
+                <div class="title">
+                    <span class="" >lorenzobozzA.com</span>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" xml:space="preserve">
+                        <g fill="#FFF">
+                            <path d="M258.8,403.5L506,650.8l247.3-247.3h22.6L506,673.4L494,661.3L236.2,403.5H258.8z" />
+                        </g>
+                    </svg>
+                </div>
+            </a>
+        </div>
+
+        <!-- Home page menu -->
+        <div id="content" class="flex">
+            <span class="block"><a onclick="Frame('open');">progetti</a></span>
+            <span class="block"><a href="https://github.com/lorenzobozza" rel="noopener noreferrer" target="_blank">github</a></span>
+            <span class="block"><a href="#foo">contatti</a></span>
+            <span class="block"><a href="#foo">about</a></span>
+        </div>
+
+        <div class="overlay_frame flex projects-menu">
+            <ul>
+                <li><span class="button" onclick="loadHTML('teslacoil');">★ solid state tesla coil - drsstc</span></li>
+                <li><span class="button" onclick="loadHTML(this);">opencv datamatrix reader in python</span></li>
+                <li><span class="button" onclick="loadHTML(this);">tic tac toe ai powered console</span></li>
+            </ul>
+        </div>
+        <script>
+            content = document.getElementById('content');
+            nav_escape = document.getElementsByClassName('nav-escape')[0];
+            frame = document.getElementsByClassName('overlay_frame')[0];
+            function Frame(string) {
+                if (string == 'open') {
+                    document.getElementById('geometry').classList.add('blur');
+                    document.body.classList.add('lock');
+                    content.classList.add('push_back');
+                    content.classList.remove('show');
+                    frame.classList.add('show');
+                    nav_escape.classList.add('show');
+                } else if (string == 'close') {
+                    document.body.classList.remove('lock');
+                    content.classList.remove('push_back');
+                    content.classList.add('show');
+                    frame.classList.remove('show');
+                    nav_escape.classList.remove('show');
+                    document.getElementById('geometry').classList.remove('blur');
+                }
+            }
+            function escape() {
+                if(hasClass(frame,'projects-menu')) {
+                    Frame('close');
+                } else if(hasClass(frame,'projects')) {
+                    frame.classList.remove('projects');
+                    frame.classList.add('projects-menu');
+                    loadHTML('projects-menu');
+                }
+            }
+            function loadHTML(path) {
+                if(path!='projects-menu') {
+                    frame.classList.remove('projects-menu');
+                    frame.classList.add('projects');
+                }
+                let xhr= new XMLHttpRequest();
+                xhr.open('GET', path+'.html', true);
+                xhr.onreadystatechange= function() {
+                    if (this.readyState!==4) return;
+                    if (this.status!==200) return; // or whatever error handling you want
+                    frame.innerHTML = this.responseText;
+                };
+                xhr.send();
+            }
+
+            function hasClass(obj,className) {
+                for (let i = 0; i < obj.classList.length; i++) {
+                    if(obj.classList[i]==className) {
+                        return 1;
+                    }
+                }
+                return 0;
+            }
+        </script>
+
+        <script src="scroll.js"></script>
+        
+        <!--ul id="events"></ul><script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script><script>const $events = document.getElementById('events');const newItem = (content) => {const item = document.createElement('li');item.innerText = content;return item;};const socket = io();socket.on('connect', () => {$events.appendChild(newItem('connect'));});</script-->
+
+        <!-- DEVELOPMENT SCRIPTS -->
+        <script src="/reload/reload.js"></script>
     </body>
 </html>

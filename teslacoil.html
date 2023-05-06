@@ -1,0 +1,56 @@
+<style>
+    img, video {
+        margin: 10px;
+        border-radius: 10px;
+    }
+    </style>
+<div class="overlay-content">
+    <h1>drsstc tesla coils</h1>
+    <p>
+        Questi dispositivi elettrici chiamati "Bobine di Tesla", inventati dall'omonimo Ingegnere e Scenziato Nikola Tesla, 
+        non sono altro che dei trasformatori elevatori di tensione avvolti su nucleo d'aria e funzionanti in regime risonante a radiofrequenza.
+        Furono ideati nell'ottica della trasmissione di energia senza fili ma non furono mai applicati per via dell'enorme dispersione di campo elettrico.
+        Ad oggi rimangono dei dispositivi di grande impatto scenico e trovano spesso posto nei musei di scenza a scopo dimostrativo.
+    </p>
+    <div class="flex-paragraph">
+        <p>
+            Il Design originale di queste macchine viene denominato "Spark Gap Tesla Coil" o abbreviato "SGTC". Come si può notare dallo schema elettrico riportato affianco, questa tipologia sfrutta un trasformatore elevatore di rete da ~10kV, un condensatore ad alta tensione ed uno scintillatore per pilotare l'avvolgimento primario. Il condensatore e l'avvolgimento primario formano un oscillatore LC con una precisa frequenza di risonanza che va accordata a quella dell'oscillatore secondario per ottenere la massima efficienza.
+        </p>
+        <img style="width: 22vw; max-width: 220px;" alt="sgtc scheme" src="/media/teslacoil/tesla_coil.svg" />
+    </div>
+    <div class="flex-paragraph">
+        <img style="width: 22vw; max-width: 220px;" alt="sstc coiling" src="/media/teslacoil/coiling.jpg" />
+        <p>
+            Nel 2016, incantato dai fulmini e dall'idea di poterli ricreare in laboratorio decido che avrei dovuto costruire una con le mie mani. <br/>
+            La prima barriera che mi si presentò davanti fu il costo, al tempo proibitivo, del trasformatore e dei condensatori con valori nominali di 10kV. Questo però mi fece scoprire una nuova tipoligia di bobine di Tesla chiamate "Solid State Tesla Coil" o "SSTC" che, per basse potenze, avevano un costo di realizzazione decisamente più basso. Le SSTC infatti sono alimentate in corrente continua ed utilizzano un inverter a MosFET per far oscillare l'avvolgimento primario alla frequenza di risonanza del circuito oscillatore secondario ottenuta tramite retroazione.
+        </p>
+    </div>
+    <div class="flex-paragraph">
+        <p>
+            Dopo aver avvolto più di 1000 spire con del filo in rame smaltato per costruire l'avvolgimento secondario, realizzai la circuiteria e l'inverter. Nonostante l'alimentazione a 12V, il campo elettrico generato dalla SSTC era in grado di eccitare il gas all'interno dei tubi al neon se questi venivano avvicinati al secondario.
+            Non soddisfatto però, decido di ricostruire l'inverter con MosFET più performanti in modo tale da poter aumentare la tensione di alimentazione a più di 30V.
+        </p>
+        <video style="width: 16vw; max-width: 120px;" disablePictureInPicture autoplay muted loop>
+            <source src="/media/teslacoil/sstc.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="flex-paragraph">
+        <img style="width: 24vw; max-width: 240px;" alt="sstc bulb" src="/media/teslacoil/bulb.jpg" />
+        <p>
+            Le prime scariche elettriche mi spinsero a prendere il progetto più seriamente e con il tempo ho approfondito le "Dual Resonant Solid State Tesla Coil" o "DRSSTC". La differenza tra SSTC e DRSSTC è nel circuito primario, mentre la SSTC utilizza un semplice avvolgimento, la DRSSTC utilizza un circuito risonante che va accordato al secondario come nelle bobine di tesla classiche. Inoltre l'oscillatore primario viene progettato con un fattore di merito il più alto possibile permettendo così di accumulare sempre più energia ad ogni oscillazione.
+        </p>
+    </div>
+    <p>
+        Successivamente per svilupparla ho investito tempo e denaro nella costruzione di un mini laboratorio di elettronica e passo dopo passo ho iniziato a convertire la mia SSTC in DRSSTC.
+    </p>
+    <div class="flex-paragraph">
+        <img style="width: 18vw;" alt="drsstc" src="/media/teslacoil/drsstc.jpg" />
+        <img style="width: 30vw;" alt="drsstc primary" src="/media/teslacoil/drsstc-primary.jpg" />
+        <video style="width: 26vw;" disablePictureInPicture autoplay muted loop>
+            <source src="/media/teslacoil/drsstc.loop.mp4" type="video/mp4">
+        </video>
+    </div>
+    <p>
+        Attualmente il progetto è sospeso per mancanza di tempo, appena mi sarà possibile dedicare del tempo in modo continuativo, il progetto raggiungerà lo stadio finale con una produzione di scariche elettriche in aria da oltre un metro.
+    </p>
+</div>
